@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
+</head>
+<body>
+   <div class="container-fluid ">
+    <div class="col-md-offset-4 col-md-4 ">
+       <br>
+       <form action="" method="POST" autocomplete="off"> 
+        {% csrf_token %}
+        <h2 class="text text-primary  text-center">UPDATE</h2>
+        <div class="form-group">
+            <label>TITLE</label>
+            <input type="text" class="form-control" value="{{data.title}}" name="title">                   
+        </div>
+        <div class="form-group">
+            <label>DESCRIPTION</label>
+            <textarea class="form-control" name='description' style="height: 150px;">{{data.description}}</textarea>                  
+        </div>
+        <div class="form-group">
+            <label>Status</label>
+          <select class="form-control" name="status">
+            <option value="To Do" {% if data.status == "To Do" %}selected{% endif %}>To Do</option>
+            <option value="Doing" {% if data.status == "Doing" %}selected{% endif %}>Doing</option>
+            <option value="Done" {% if data.status == "Done" %}selected{% endif %}>Done</option>
+          </select>
+        </div>  
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block" value="Update">                   
+        </div>
+
+</body>
+</html>
